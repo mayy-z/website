@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from livereload import Server
 
 app = Flask(__name__)
 
@@ -8,4 +9,13 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Hot reload using live server
+    server = Server(app.wsgi_app)
+    server.watch("templates/")
+    server.watch("static/")
+    server.watch("static/")
+    server.serve(
+        port=5000,
+        liveport=35729,
+        debug=True
+    )
