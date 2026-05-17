@@ -14,7 +14,6 @@ if __name__ == "__main__":
     server = Server(app.wsgi_app)
     server.watch("templates/")
     server.watch("static/")
-    server.watch("static/")
     server.serve(
         port=5000,
         liveport=35729,

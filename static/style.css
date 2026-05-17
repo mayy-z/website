@@ -1,0 +1,62 @@
+.bg-img {
+
+  background-image: url("https://images.unsplash.com/photo-1645785328791-64e8ff28edcd?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==Ybackground_image.avif");
+
+  min-height: 100vh;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  position: relative;
+}
+
+
+body{
+    margin: 0px;
+}
+
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1{
+    text-align: center;
+    padding: 50px;
+    font-size: 50px;
+    background-color: rgb(249, 247, 244);
+    font-family: "Lucida Handwriting", Cursive;
+
+}
+
+
+.navbar {
+    position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.navbar ul{
+    list-style-type: none;
+    background-color:antiquewhite;
+    padding:0px;
+    margin: 0px;
+    display: flex;
+}
+
+.navbar a{
+    color:rgb(94, 11, 11);
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-family: "Monaco", Monospace;
+    font-size: 15px;
+}
+
+
+.navbar a:hover{
+    background-color: rgb(159, 148, 134);
+}
