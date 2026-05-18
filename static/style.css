@@ -53,10 +53,12 @@ h1{
     display: block;
     text-align: center;
     font-family: "Monaco", Monospace;
-    font-size: 15px;
+    font-size: 15px; 
+    float: right;
 }
 
 
 .navbar a:hover{
     background-color: rgb(159, 148, 134);
+    color:rgb(123, 20, 20);
 }
