@@ -28,6 +28,7 @@ h1{
     font-size: 50px;
     background-color: rgb(249, 247, 244);
     font-family: "Lucida Handwriting", Cursive;
+    margin: 0;
 
 }
 
@@ -59,6 +60,36 @@ h1{
 
 
 .navbar a:hover{
-    background-color: rgb(159, 148, 134);
-    color:rgb(123, 20, 20);
+    background-color: rgb(179, 166, 148);
+    color:rgb(143, 36, 36);
+}
+
+.icon ul{
+    list-style-type: none;
+     color:rgb(94, 11, 11);
+    padding:0px;
+    margin: 0px;
+    display: flex;
+}
+
+.icon a:hover{
+    background-color: rgb(179, 166, 148);
+    color:rgb(143, 36, 36);
+}
+
+.icon {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.navbar a{
+    color:rgb(94, 11, 11);
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-family: "Monaco", Monospace;
+    font-size: 15px; 
+    float: right;
 }
