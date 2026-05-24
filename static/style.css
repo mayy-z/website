@@ -35,8 +35,10 @@ h1{
 
 .navbar {
     position: sticky;
-  top: 0;
-  overflow: hidden;
+    top: 0;
+    overflow: hidden;
+    padding:0px;
+    margin: 0px;
 }
 
 .navbar ul{
@@ -45,6 +47,7 @@ h1{
     padding:0px;
     margin: 0px;
     display: flex;
+
 }
 
 .navbar a{
@@ -55,7 +58,8 @@ h1{
     text-align: center;
     font-family: "Monaco", Monospace;
     font-size: 15px; 
-    float: right;
+    display: block;
+    float: left;
 }
 
 
@@ -63,33 +67,19 @@ h1{
     background-color: rgb(179, 166, 148);
     color:rgb(143, 36, 36);
 }
-
-.icon ul{
-    list-style-type: none;
-     color:rgb(94, 11, 11);
-    padding:0px;
-    margin: 0px;
-    display: flex;
-}
-
-.icon a:hover{
+.navbar b:hover{
     background-color: rgb(179, 166, 148);
     color:rgb(143, 36, 36);
 }
 
-.icon {
-  position: sticky;
-  top: 0;
-  overflow: hidden;
-}
-
-.navbar a{
+.navbar b{
     color:rgb(94, 11, 11);
     text-decoration: none;
-    padding: 15px;
+    padding: 10px;
     display: block;
     text-align: center;
     font-family: "Monaco", Monospace;
-    font-size: 18px; 
-    float: right;
+    font-size: 20px; 
+    float: left;
+    display: flex;
 }
