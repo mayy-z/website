@@ -1,6 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
+<html>
+<head>
+<style>
+div.gallery{
+    display:flex;
+    flex-wrap:warp;
+    justify-content: flex-start;
+}
 
+div.gallery-item{
+    margin:5px;
+    border:1px solid #ccc;
+    width:180px;
+}
+
+div.gallery-item:hover {
+  border: 1px solid #777;
+}
+
+
+div.gallery-item img{
+    width:100%;
+    height:auto;
+}
+
+div.gallery-item div.desc{
+    padding:15px;
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="gallery">
+
+<div class="gallery-item">
+    <a target="_blank" href="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce"></a>
+       <img src="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce" alt="tops" width="400" height="400">
+    </a>
+    <div class="desc">top</div>
+
+
+<div class="gallery-item">
+    <a target="_blank" href="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce"></a>
+       <img src="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce" alt="tops" width="400" height="400">
+    </a>
+    <div class="desc">top</div>
+
+
+    <div class="gallery-item">
+    <a target="_blank" href="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce"></a>
+       <img src="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce" alt="tops" width="400" height="400">
+    </a>
+    <div class="desc">top</div>
+
+
+    <div class="gallery-item">
+    <a target="_blank" href="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce"></a>
+       <img src="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce" alt="tops" width="400" height="400">
+    </a>
+    <div class="desc">top</div>
+
+    
+</div>
+</div>
+</body>
+</html>
    
    
 
