@@ -16,7 +16,11 @@ def signup():
 def login():
     return render_template('login.html')
 
-
+@app.route('/item/<int:id>')
+def item(id):
+    sql = "SELECT * FROM item WHERE id=?"
+    item = query_db(sql,args=(id,),one=True)
+    return render_template('item.html', item=item)
 
 if __name__ == "__main__":
     # Hot reload using live server
@@ -28,3 +32,5 @@ if __name__ == "__main__":
         liveport=35729,
         debug=True
     )
+
+
