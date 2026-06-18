@@ -104,9 +104,39 @@ this is for signup page
 }
 input{
     width: 100%;
-    background: transparent;
+    background: transparxent;
     border: 0;
     outline: 0;
     padding: 18px 15px;
     border-color:rgb(244, 217, 180);
+}
+
+.input-field i{
+    margin-left: 15px;
+    color: #999;
+}
+
+form p{
+    text-align: left;
+    font-size: 13px;
+}
+
+form p a{
+    text-decoration: none;
+    color: #2c3ea2;
+}
+
+
+
+.btn-field button{
+    width: 100%;
+    flex-basis: 48%;
+    background: #ac9368;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border:0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
 }
