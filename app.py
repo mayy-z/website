@@ -16,16 +16,26 @@ def signup():
 def login():
     return render_template('login.html')
 
-@app.route('item_name')
+@app.route('/checkout')
+def checkout():
+    return render_template('checkout.html')
+
+@app.route('/item_name')
 def item_name():
     item_name= ERD .db("SELECT id, name from item")
-    return render_template ('item_name.html', item_nmae=item_name)
+    return render_template ('item_name.html', item_name=item_name)
 
 @app.route('/item_name/<int:id>')
 def singe_item_name(id):
     sql= f"SELECT* FROM item_name WHERE id={id}" #TOOO remove f-string
     item_name = ERD .db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
+
+@app.route('/index/<int:id>')
+def index(id):
+    sql= f"SELECT* FROM index WHERE id={id}" #TOOO remove f-string
+    index = ERD .db(sql, one=True)
+    return render_template('index.html', index=index)
 
 if __name__ == "__main__":
     # Hot reload using live server
