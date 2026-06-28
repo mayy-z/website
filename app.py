@@ -4,9 +4,21 @@ from livereload import Server
 app = Flask(__name__)
 app.debug = True
 
+
+def query_db(sql,args=(),one=False):
+    '''connect and query- will retun one item if one=true and can accept arguments as tuple'''
+    db = sqlite.connect(DATABASE)
+    cursor = db.cursor()
+    cursor.execute(sql, args)
+    results = cursor.fetchall()
+    db.commit()
+    db.close()
+    return (results[0] if results else None) if one else results
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    results = query_db("SELECT * FROM Item")  
+    return render_template('index.html',results=results)
 
 @app.route('/signup')
 def signup():
@@ -31,11 +43,7 @@ def singe_item_name(id):
     item_name = ERD .db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
 
-@app.route('/index/<int:id>')
-def index(id):
-    sql= f"SELECT* FROM index WHERE id={id}" #TOOO remove f-string
-    index = ERD .db(sql, one=True)
-    return render_template('index.html', index=index)
+
 
 if __name__ == "__main__":
     # Hot reload using live server

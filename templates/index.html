@@ -40,13 +40,15 @@ div.gallery-item div.desc{
 
 <div class="gallery">
 
-    {% for _ in range(16) %}
-        <div class="gallery-item">
-            <a target="_blank" href="https://www.newyorker.com/culture/kitchen-notes/its-time-to-admit-that-iceberg-is-a-superior-lettuce"></a>
-            <img src="{{irem[img-src]}}" alt="tops" width="400" height="400">
-            </a>
-            <div class="desc">top</div>
-        </div>
+    
+    {% for item in results %}
+    <div class="item">
+        <h1>{{ item[1] }}</h1>
+        <!-- img is an anchor tag with href to the dynamic route using the id of the item -->
+        <a href="item/{{item[0]}}">
+            <img src="{{url_for('static',filename='images/'+img-scr[2])}}" alt="{{img-scr[2]}}">
+        </a>
+    </div>
     {% endfor %}
     
 </div>
