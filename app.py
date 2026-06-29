@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from livereload import Server
+import sqlite3
 
 app = Flask(__name__)
 app.debug = True
@@ -7,7 +8,7 @@ app.debug = True
 
 def query_db(sql,args=(),one=False):
     '''connect and query- will retun one item if one=true and can accept arguments as tuple'''
-    db = sqlite.connect(DATABASE)
+    db = sqlite3.connect('ERD .db')
     cursor = db.cursor()
     cursor.execute(sql, args)
     results = cursor.fetchall()
@@ -37,10 +38,10 @@ def item_name():
     item_name= ERD .db("SELECT id, name from item")
     return render_template ('item_name.html', item_name=item_name)
 
-@app.route('/item_name/<int:id>')
+@app.route('/item/<int:id>')
 def singe_item_name(id):
-    sql= f"SELECT* FROM item_name WHERE id={id}" #TOOO remove f-string
-    item_name = ERD .db(sql, one=True)
+    sql= f"SELECT * FROM Item WHERE id={id}" #TOOO remove f-string
+    item_name = query_db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
 
 
