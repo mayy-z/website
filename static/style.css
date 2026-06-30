@@ -67,9 +67,10 @@ h1{
 
 .gallery{
     display: grid;
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-    grid-template-rows: minmax(100px, auto);
-    gap: 20px;
+    grid-template-columns: repeat(4, minmax(80px, 1fr));
+    grid-template-rows: minmax(80px, auto);
+    gap: 30px;
+    padding: 0 40px;
 }
 
 .item img{
