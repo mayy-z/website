@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash, session, redirect
 from livereload import Server
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.debug = True
@@ -21,13 +22,6 @@ def index():
     results = query_db("SELECT * FROM Item")  
     return render_template('index.html',results=results)
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 @app.route('/checkout')
 def checkout():
@@ -44,7 +38,46 @@ def singe_item_name(id):
     item_name = query_db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
 
+@app.route('/login', methods=["GET","POST"])
+def login():
+    #if the user posts a username and password
+    if request.method == "POST":
+        #get the username and password
+        Name = request.form['Name']
+        Password = request.form['password']
+        #try to find this user in the database- note- just keepin' it simple so usernames must be unique
+        sql = "SELECT * FROM user WHERE Name = ?"
+        user = query_db(sql=sql,args=('Name',),one=True)
+        if user:
+            #we got a user!!
+            #check password matches-
+            if check_password_hash(user[2],Password):
+                #we are logged in successfully
+                #Store the username in the session
+                session['user'] = user
+                flash("Logged in successfully")
+            else:
+                flash("Password incorrect")
+        else:
+            flash("Username does not exist")
+    #render this template regardles of get/post
+    return render_template('login.html')
 
+@app.route('/signup', methods=["GET","POST"])
+def signup():
+    #if the user posts from the signup page
+    if request.method == "POST":
+        #add the new username and hashed password to the database
+        Name = request.form['Name']
+        Password = request.form['Password']
+        #hash it with the cool secutiry function
+        hashed_Password = generate_password_hash(Password)
+        #write it as a new user to the database
+        sql = "INSERT INTO user (username,password) VALUES (?,?)"
+        query_db(sql,(Name,hashed_Password))
+        #message flashes exist in the base.html template and give user feedback
+        flash("Sign Up Successful")
+    return render_template('signup.html')
 
 if __name__ == "__main__":
     # Hot reload using live server
