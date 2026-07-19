@@ -33,10 +33,11 @@ def item_name():
     return render_template ('item_name.html', item_name=item_name)
 
 @app.route('/item/<int:id>')
-def singe_item_name(id):
+def single_item_name(id):
     sql= f"SELECT * FROM Item WHERE id={id}" #TOOO remove f-string
     item_name = query_db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
+
 
 @app.route('/login', methods=["GET","POST"])
 def login():
