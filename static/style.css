@@ -81,8 +81,31 @@ h1{
    
 }
 
+/* for single page */
+.item-container {
+    display: flex;
+    align-items: center;
+    gap:20px;
 
+}
 
+.item-image{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-text{
+  display: flex;
+  flex-direction: column;
+  text-align:right;
+}
+
+.item-title{
+  text-align:right;
+  margin-bottom: 12px;
+}
 /* this is for signup page */
 .container{
   width: 100%;

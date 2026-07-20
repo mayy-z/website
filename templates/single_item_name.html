@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <head>
-      <link rel="stylesheet" href="static/style.css">
+      <link rel="stylesheet" href="{{url_for ('static', filename='/style.css')}}">
 </head>
 <body>
-      <h1>This is a single page</h1>
-      <p>This is the page for item {{item_name[0]}}. A {{item_name[1]}}</p>
+      <div class="item-container">
+          <h1 class="item-itile">This is a page for item {{item_name[0]}}</h1>
+          <p class="item-description">description: {{item_name[2]}}</p>
+          <img class= "item-image" src="{{url_for('static',filename='images/'+item_name[5])}}" alt="{{item_name[1]}}">
+      </div>
 </body>
 {% endblock %}
