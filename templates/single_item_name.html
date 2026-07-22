@@ -5,8 +5,10 @@
 </head>
 <body>
       <div class="item-container">
-          <h1 class="item-itile">This is a page for item {{item_name[0]}}</h1>
-          <p class="item-description">description: {{item_name[2]}}</p>
+          <h1>This is a page for item {{item_name[0]}}</h1>
+          <p>Description: {{item_name[2]}}</p>
+          <p>Color: {{item_name[3]}}</p>
+          <p class>Price: {{item_name[4]}}</p>
           <img class= "item-image" src="{{url_for('static',filename='images/'+item_name[5])}}" alt="{{item_name[1]}}">
       </div>
 </body>

@@ -85,27 +85,20 @@ h1{
 .item-container {
     display: flex;
     align-items: center;
-    gap:20px;
+    gap:30px;
+    padding: 0 40px;
+    border-color:rgb(244, 217, 180);
+    margin-left: auto;
 
 }
 
 .item-image{
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+    width: 500px;
+    height: 500px;
+    object-fit: absolute;
+    object-position: right;
 }
 
-.item-text{
-  display: flex;
-  flex-direction: column;
-  text-align:right;
-}
-
-.item-title{
-  text-align:right;
-  margin-bottom: 12px;
-}
 /* this is for signup page */
 .container{
   width: 100%;
@@ -145,7 +138,7 @@ h1{
 }
 input{
     width: 100%;
-    background: transparxent;
+    background: transparent;
     border: 0;
     outline: 0;
     padding: 18px 15px;
