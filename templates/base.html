@@ -19,7 +19,20 @@
     
     
     {% include 'nav.html'%}
-    {% block content %}
+
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% if session['user'] %}
+    <h1> You are logged in as {{session['user']}}</h1>
+    {% endif %}
+        {% block content %}
     {% endblock %}
     {% include 'footer.html' %}
 

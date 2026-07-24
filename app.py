@@ -4,6 +4,7 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "MyReallySecretKey"
 app.debug = True
 
 
@@ -45,9 +46,9 @@ def login():
     if request.method == "POST":
         #get the username and password
         Name = request.form['Name']
-        Password = request.form['password']
+        Password = request.form['Password']
         #try to find this user in the database- note- just keepin' it simple so usernames must be unique
-        sql = "SELECT * FROM user WHERE Name = ?"
+        sql = "SELECT * FROM user WHERE Username = ?"
         user = query_db(sql=sql,args=('Name',),one=True)
         if user:
             #we got a user!!
