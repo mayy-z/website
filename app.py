@@ -56,7 +56,7 @@ def login():
             if check_password_hash(user[2],Password):
                 #we are logged in successfully
                 #Store the username in the session
-                session['user'] = user
+                session['Username'] = user
                 flash("Logged in successfully")
             else:
                 flash("Password incorrect")
@@ -81,6 +81,9 @@ def signup():
         flash("Sign Up Successful")
     return render_template('signup.html')
 
+@app.post("/buy_clothes")
+def buy_clothes():
+    Name = 
 if __name__ == "__main__":
     # Hot reload using live server
     server = Server(app.wsgi_app)
