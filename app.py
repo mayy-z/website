@@ -81,9 +81,32 @@ def signup():
         flash("Sign Up Successful")
     return render_template('signup.html')
 
-@app.post("/buy_clothes")
+@app.post('/buy_clothes', methods=["GET","POST"])
 def buy_clothes():
-    Name = 
+    User_Id = session['user']['uuid']
+    if request.method == "POST":
+        Item_id= request.form["Item_id"]
+        Field4 = request.form["Field4"]
+
+
+    ERD= """
+        INSERT INTO farms
+        (Id, User_Id, Item_Id, Field4)
+        VALUES (?, ?, ?, ?)
+
+    """
+
+    ERD .db(
+        ERD,
+        (
+            Id,
+            User_Id,
+            Item_id,
+            Field4
+        )
+    )
+    return redirect("/checkout")
+
 if __name__ == "__main__":
     # Hot reload using live server
     server = Server(app.wsgi_app)
