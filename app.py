@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, session, redirect
 from livereload import Server
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
+from pathlib import Path
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MyReallySecretKey"
@@ -81,17 +82,18 @@ def signup():
         flash("Sign Up Successful")
     return render_template('signup.html')
 
-@app.post('/buy_clothes', methods=["GET","POST"])
+@app.route('/buy_clothes', methods=["GET","POST"])
 def buy_clothes():
-    User_Id = session['user']['uuid']
+    Id = session['user']['uuid']
     if request.method == "POST":
+        User_Id= request.form ["user_Id"]
         Item_id= request.form["Item_id"]
         Field4 = request.form["Field4"]
 
 
     ERD= """
-        INSERT INTO farms
-        (Id, User_Id, Item_Id, Field4)
+        INSERT INTO Cart_items
+        (Id, User_Id, Item_id, Field4)
         VALUES (?, ?, ?, ?)
 
     """
