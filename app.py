@@ -15,6 +15,8 @@ def query_db(sql,args=(),one=False):
     cursor = db.cursor()
     cursor.execute(sql, args)
     results = cursor.fetchall()
+    print(sql, args, one)
+    print('results:', results)
     db.commit()
     db.close()
     return (results[0] if results else None) if one else results
@@ -40,17 +42,23 @@ def single_item_name(id):
     item_name = query_db(sql, one=True)
     return render_template('single_item_name.html', item_name=item_name)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    # Pass the 404 status code as the second return value
+    return render_template('404.html'), 404
+
 
 @app.route('/login', methods=["GET","POST"])
 def login():
     #if the user posts a username and password
     if request.method == "POST":
         #get the username and password
-        Name = request.form['Name']
+        name = request.form['Name']
         Password = request.form['Password']
         #try to find this user in the database- note- just keepin' it simple so usernames must be unique
         sql = "SELECT * FROM user WHERE Username = ?"
-        user = query_db(sql=sql,args=('Name',),one=True)
+        user = query_db(sql=sql,args=(name,),one=True)
+        print(user)
         if user:
             #we got a user!!
             #check password matches-
@@ -59,10 +67,15 @@ def login():
                 #Store the username in the session
                 session['Username'] = user
                 flash("Logged in successfully")
+                print("Logged in successfully")
+                redirect_location = request.args.get('redirect')
+                return redirect("/")
             else:
                 flash("Password incorrect")
+                print("Password incorrect")
         else:
             flash("Username does not exist")
+            print("Username does not exist")
     #render this template regardles of get/post
     return render_template('login.html')
 
