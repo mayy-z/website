@@ -84,13 +84,13 @@ def signup():
     #if the user posts from the signup page
     if request.method == "POST":
         #add the new username and hashed password to the database
-        Name = request.form['Name']
+        name = request.form['Name']
         Password = request.form['Password']
         #hash it with the cool secutiry function
         hashed_Password = generate_password_hash(Password)
         #write it as a new user to the database
         sql = "INSERT INTO user (username,password) VALUES (?,?)"
-        query_db(sql,(Name,hashed_Password))
+        query_db(sql,(name,hashed_Password))
         #message flashes exist in the base.html template and give user feedback
         flash("Sign Up Successful")
     return render_template('signup.html')
