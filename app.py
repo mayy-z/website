@@ -99,9 +99,9 @@ def signup():
 def buy_clothes():
     Id = session['user']['uuid']
     if request.method == "POST":
-        User_Id= request.form ["user_Id"]
-        Item_id= request.form["Item_id"]
-        Field4 = request.form["Field4"]
+        Username= request.form ["Username"]
+        Type= request.form["Type"]
+        Price = request.form["Price"]
 
 
     ERD= """

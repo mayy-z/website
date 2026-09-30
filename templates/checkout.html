@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="items">
+<head>
+      <link rel="stylesheet" href="{{url_for ('static', filename='style.css')}}">
+</head>
+<body>
+    <section class="items">
 
-    <h1>These are the items in your cart</h1>
+    <h2>These are the items in your cart</h2>
+    
 
     <form action="/buy_clothes" method="POST" enctype="multipart/form-data">
 
@@ -11,6 +16,7 @@
     </form>
 
 </section>
+</body>
    
 {% endblock %}
 
