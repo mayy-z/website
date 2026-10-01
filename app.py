@@ -104,20 +104,20 @@ def buy_clothes():
         Price = request.form["Price"]
 
 
-    ERD= """
+    sql= """
         INSERT INTO Cart_items
         (Id, User_Id, Item_id, Field4)
         VALUES (?, ?, ?, ?)
 
     """
 
-    ERD .db(
-        ERD,
+    query_db(sql,
+        
         (
             Id,
-            User_Id,
-            Item_id,
-            Field4
+            Username,
+            Type,
+            Price
         )
     )
     return redirect("/checkout")
