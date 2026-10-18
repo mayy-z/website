@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect
-from livereload import Server
+from livereload import Server #this reloads the server automatically everytime I add a new code
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 from pathlib import Path
@@ -19,23 +19,24 @@ def query_db(sql,args=(),one=False):
     print('results:', results)
     db.commit()
     db.close()
+    #if results = 0, return none
+    #if one = True, return one
+    #if one = False, return lists of items
     return (results[0] if results else None) if one else results
 
-@app.route('/')
+
+@app.route('/') #routes to the main page
 def index():
     results = query_db("SELECT * FROM Item")  
     return render_template('index.html',results=results)
 
 
-@app.route('/checkout')
+@app.route('/checkout') #routes to the checkout page
 def checkout():
     return render_template('checkout.html')
 
-@app.route('/item_name')
-def item_name():
-    item_name= ERD .db("SELECT id, name from item")
-    return render_template ('item_name.html', item_name=item_name)
-
+#passes the id of an anchor tag that you have clicked and query for
+#that item before sending the data to the template
 @app.route('/item/<int:id>')
 def single_item_name(id):
     sql= f"SELECT * FROM Item WHERE id={id}" #TOOO remove f-string
@@ -121,7 +122,7 @@ def buy_clothes():
         )
     )
     return redirect("/checkout")
-
+#runs the app 
 if __name__ == "__main__":
     # Hot reload using live server
     server = Server(app.wsgi_app)

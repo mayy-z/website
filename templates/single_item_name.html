@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <head>
       <link rel="stylesheet" href="{{url_for ('static', filename='/style.css')}}">
 </head>
 <body>
       <div class="item-container">
-          <h1>This is a page for item {{item_name[0]}}</h1>
+          <h1>{{item_name[1]}}</h1>
           <p>Description: {{item_name[2]}}</p>
           <p>Color: {{item_name[3]}}</p>
           <p class>Price: {{item_name[4]}}</p>
+          <div class="shopping">
+            <button type="submit">Check Out</button>
+
           <img class= "item-image" src="{{url_for('static',filename='images/'+item_name[5])}}" alt="{{item_name[1]}}">
       </div>
 </body>

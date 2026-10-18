@@ -102,6 +102,12 @@ h1{
     object-position: right;
 }
 
+.shopping {
+    display: flex;
+    padding: 0px;
+    
+}
+
 /* this is for signup page */
 .container{
   width: 100%;
