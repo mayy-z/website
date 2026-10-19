@@ -85,14 +85,7 @@ h1{
 }
 
 /* for single page */
-.item-container {
-    display: absolute;
-    align-items: center;
-    gap:30px;
-    padding: 0 40px;
-    border-color:rgb(244, 217, 180);
-    margin: 0;
-}
+
 
 .item-image{
     width: 500px;

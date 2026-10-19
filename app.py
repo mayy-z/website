@@ -96,32 +96,26 @@ def signup():
         flash("Sign Up Successful")
     return render_template('signup.html')
 
-@app.route('/buy_clothes', methods=["GET","POST"])
-def buy_clothes():
-    Id = session['user']['uuid']
-    if request.method == "POST":
-        Username= request.form ["Username"]
-        Type= request.form["Type"]
-        Price = request.form["Price"]
 
 
+@app.route('/add_to_cart/<int:item_id>', methods=["POST"])
+def buy_clothes(item_id):
+    id = session['Username'][0]
+    print(id)
     sql= """
         INSERT INTO Cart_items
-        (Id, User_Id, Item_id, Field4)
-        VALUES (?, ?, ?, ?)
-
-    """
+        (User_Id, Item_id) 
+        VALUES (?, ?)
+    """# TODO: Remove field 4
 
     query_db(sql,
-        
         (
-            Id,
-            Username,
-            Type,
-            Price
+            id,
+            item_id,
         )
     )
     return redirect("/checkout")
+
 #runs the app 
 if __name__ == "__main__":
     # Hot reload using live server
