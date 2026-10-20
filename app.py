@@ -100,13 +100,16 @@ def signup():
 
 @app.route('/add_to_cart/<int:item_id>', methods=["POST"])
 def buy_clothes(item_id):
-    id = session['Username'][0]
+    username = session.get('username')
     print(id)
+    if not username:
+        return redirect("/login")
+
     sql= """
         INSERT INTO Cart_items
-        (User_Id, Item_id) 
+        (username, Item_id) 
         VALUES (?, ?)
-    """# TODO: Remove field 4
+    """
 
     query_db(sql,
         (
