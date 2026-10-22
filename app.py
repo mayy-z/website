@@ -51,26 +51,33 @@ def page_not_found(error):
 
 @app.route('/login', methods=["GET","POST"])
 def login():
+    if session.get('Username'):
+        return redirect ("/")
     #if the user posts a username and password
     if request.method == "POST":
         #get the username and password
-        name = request.form['Name']
-        Password = request.form['Password']
+        username = request.form['Name']
+        password = request.form['Password']
         #try to find this user in the database- note- just keepin' it simple so usernames must be unique
         sql = "SELECT * FROM user WHERE Username = ?"
-        user = query_db(sql=sql,args=(name,),one=True)
+        user = query_db(sql=sql,args=(username,),one=True)
         print(user)
         if user:
             #we got a user!!
             #check password matches-
-            if check_password_hash(user[2],Password):
+            if check_password_hash(user[2],password):
                 #we are logged in successfully
                 #Store the username in the session
                 session['Username'] = user
                 flash("Logged in successfully")
                 print("Logged in successfully")
                 redirect_location = request.args.get('redirect')
-                return redirect("/")
+                if redirect_location:
+                    return redirect("/" + redirect_location)
+                else:
+                    # Send the user to home if no redirect param
+                    
+                    return redirect("/")
             else:
                 flash("Password incorrect")
                 print("Password incorrect")
@@ -97,24 +104,24 @@ def signup():
     return render_template('signup.html')
 
 
-
 @app.route('/add_to_cart/<int:item_id>', methods=["POST"])
-def buy_clothes(item_id):
-    username = session.get('username')
-    print(id)
+def buy_clothes(Item_Id):
+    username = session.get('Username')
+    print(username)
     if not username:
-        return redirect("/login")
+        flash("Please log in first")
+        return redirect ("/login")
 
     sql= """
         INSERT INTO Cart_items
-        (username, Item_id) 
+        (user_id, Item_Id) 
         VALUES (?, ?)
     """
 
     query_db(sql,
         (
-            id,
-            item_id,
+            user_id,
+            Item_Id,
         )
     )
     return redirect("/checkout")
