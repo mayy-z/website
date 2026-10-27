@@ -104,22 +104,22 @@ def signup():
     return render_template('signup.html')
 
 
-@app.route('/add_to_cart/<int:item_id>', methods=["POST"])
+@app.route('/add_to_cart/<int:Item_Id>', methods=["POST"])
 def buy_clothes(Item_Id):
     username = session.get('Username')
-    print(username)
     if not username:
         flash("Please log in first")
         return redirect ("/login")
-
+    user_id = username[0]
+    
     sql= """
         INSERT INTO Cart_items
-        (user_id, Item_Id) 
+        (User_Id, Item_Id) 
         VALUES (?, ?)
     """
 
     query_db(sql,
-        (
+        (            
             user_id,
             Item_Id,
         )
