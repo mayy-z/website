@@ -106,12 +106,13 @@ def signup():
 
 @app.route('/add_to_cart/<int:Item_Id>', methods=["POST"])
 def buy_clothes(Item_Id):
-    username = session.get('Username')
+    username = session.get('Username') #make sure that the user is logged in first before adding the clothes into cart
     if not username:
         flash("Please log in first")
         return redirect ("/login")
     user_id = username[0]
-    
+
+    #this is to save the data to the db
     sql= """
         INSERT INTO Cart_items
         (User_Id, Item_Id) 

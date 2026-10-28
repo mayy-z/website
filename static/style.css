@@ -208,7 +208,33 @@ form p a{
   text-align: center;
   border: 2px pink;
   padding: 10px;
+  display:block;
 }
+
+.item-image {
+    width: 400px;
+    height: auto;
+    margin-bottom: 20%;
+}
+
+.item-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    margin-top: 60px;
+   
+}
+
+.item-details {
+    display:block;
+    flex: 1;
+    font-size: larger;
+    min-width: 300px;
+    text-align: left;
+}
+
+
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
